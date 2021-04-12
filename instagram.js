@@ -34,10 +34,21 @@ Usuario.findAll().then((resultado) => {
 // } while (i < 6);
 
 
-// // buscado pela chave primaria:
-// Usuario.findByPk(1).then((resultado) => {
-//     console.table(resultado.toJSON()); 
+// // mostrando os posts de um usuario buscado pela chave primaria:
+// Usuario.findByPk(6, {
+//     include: [
+//         {association: "posts"}
+//     ]
+// }).then((usuario) => {
+//     console.table(usuario.posts.map((post) => post.toJSON())); 
 // });
+//faz a mesma coisa : 
+Usuario.findByPk(1, {include:['posts']}).then(
+    usuario => {
+        console.table(usuario.toJSON());
+        sequelize.close();
+    }
+)
 
 // Comentario.findByPk(2).then((resultado) => {
 //     console.table(resultado.toJSON()); 
@@ -125,10 +136,10 @@ Usuario.findAll().then((resultado) => {
 //     console.table(resultado);
 // })
 
-Usuario.destroy({
-    where: {
-        id: 5
-    }
-}).then((resultado) => {
-    console.log(resultado);
-})
+// Usuario.destroy({
+//     where: {
+//         id: 5
+//     }
+// }).then((resultado) => {
+//     console.log(resultado);
+// })
