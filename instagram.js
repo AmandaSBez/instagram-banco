@@ -43,9 +43,16 @@ Usuario.findAll().then((resultado) => {
 //     console.table(usuario.posts.map((post) => post.toJSON())); 
 // });
 //faz a mesma coisa : 
-Usuario.findByPk(1, {include:['posts']}).then(
-    usuario => {
-        console.table(usuario.toJSON());
+// Usuario.findByPk(1, {include:['posts']}).then(
+//     usuario => {
+//         console.table(usuario.toJSON());
+//         sequelize.close();
+//     }
+// )
+
+Post.findByPk(1, {include:['comentario']}).then(
+    Post => {
+        console.log(Post.toJSON());
         sequelize.close();
     }
 )
