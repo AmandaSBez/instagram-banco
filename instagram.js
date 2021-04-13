@@ -6,6 +6,8 @@ Usuario.findAll().then((resultado) => {
     console.table(resultado.map(user => user.toJSON()));
 });
 
+
+
 //users sem letra a no nome
 // Usuario.findAll({
 //     where: {
@@ -50,13 +52,13 @@ Usuario.findAll().then((resultado) => {
 //     }
 // )
 
-Post.findByPk(1, {include:['comentario']}).then(
-    Post => {
-        console.log(Post.toJSON());
+
+Post.findByPk(1, {include:["curtiu"]}).then(
+    post => {
+        console.log(post.toJSON());
         sequelize.close();
     }
 )
-
 // Comentario.findByPk(2).then((resultado) => {
 //     console.table(resultado.toJSON()); 
 // });
